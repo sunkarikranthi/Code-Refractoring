@@ -1,0 +1,29 @@
+<!-- templates/home.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body style="font-family: sans-serif; margin: 2%;" >
+        <h1>Welcome to personalised Notes</h1>
+    <form action="/add_note" method="post">
+        <label for="note">Note :</label>
+        <input type="text" id="note" name="note" placeholder="eg: Meeting @10:30 AM" size="30px" required>
+        <button type="submit">Add Note</button>
+    </form>
+    {% if len_note > 0 %}
+    <h2>My Notes</h2>
+    <ul>
+        {% for note in notes %}
+            <li style="margin-bottom: 1%;"><span styl`e="padding: 1%; ">{{ note }}</span></li>
+        {% endfor %}
+        <form action="/delete_all">
+            <button type="submit" name="delete_all">Delete All</button>
+        </form>
+    </ul>
+    {% endif %}
+</body>
+</html>
